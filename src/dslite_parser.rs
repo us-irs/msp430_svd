@@ -209,6 +209,13 @@ fn parse_register(path: &Path, el: &Element, module: &str) -> Result<Register> {
         );
     }
 
+    if width != 8 && width != 16 && width != 32 {
+        println!(
+            "unexpected register width {} for element {} in file {:?} and module {:?}",
+            width, name, path, module
+        );
+    }
+
     let fields = el
         .children
         .iter()
